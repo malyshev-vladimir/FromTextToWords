@@ -1,6 +1,7 @@
-# text = input().split()
+unedited_text = input().split()
 
-text = """Wenn Du mich ein wenig kennst, dann weißt Du, dass ich eine Leseratte bin. So nennt man einen Menschen, 
+"""Wenn Du mich ein wenig kennst, dann weißt Du, dass ich eine Leseratte bin. So nennt man einen 
+Menschen, 
 der gerne Bücher liest. Ich liebe Bücher. Und daher habe ich hier in Slow German auch schon oft über deutsche 
 Literatur gesprochen. Zum Beispiel über Hermann Hesse, Heinrich Heine oder Schiller und Goethe. Eine große Figur habe 
 ich bislang ausgelassen, und das hole ich heute nach: Thomas Mann. Thomas Mann wurde 1875 in Lübeck geboren, 
@@ -40,19 +41,33 @@ mochten ihn. Viele Leser warfen ihm vor, zu intellektuell zu sein. Manchen war e
 habe seine Bücher sehr gerne gelesen, aber man braucht Zeit dafür: Der Zauberberg beispielsweise ist über 1000 Seiten 
 lang. """
 
-text_list = text.split()
+LIST_OF_PUNCTUATION_MARKS = [',', '.', ':', ';', '(', ')', '"', '“', '„']
 
-punctuation_marks = [',', '.', ':', ';', '(', ')', '"', '“', '„']
+LIST_OF_ARTICLES = ['der', 'das', 'die', 'den', 'dem', 'des', 'denen', 'ein', 'eine', 'einen', 'einer', 'einem',
+                    'eines']
 
-redact_list = []
+LIST_OF_NUMBERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
-for word in text_list:
-    # удаление символов из списка символов
-    for pm in punctuation_marks:
-        word = word.replace(pm, '')
-    # добавление отредактированных слов в новый список
-    redact_list.append(word)
-    print(word)
 
-print(text_list)
-print(redact_list)
+def remove_punctuation_marks(text):
+    """удаление знаков пунктуации из текста / """
+    edited_text = text.strip(''.join(LIST_OF_PUNCTUATION_MARKS))
+    return edited_text
+
+
+def remove_numbers(text):
+    edited_text = text.strip(''.join(LIST_OF_NUMBERS))
+    return edited_text
+
+
+def remove_unnecessary_words(text):
+    """удаление ненужных слов (например артиклей, союзов, часто встречающихся слов)"""
+    edited_text = text.strip(''.join(LIST_OF_ARTICLES))
+    return edited_text
+
+
+text_after_editing = remove_punctuation_marks(unedited_text)
+text_after_editing = remove_numbers(unedited_text)
+text_after_editing = remove_unnecessary_words(unedited_text)
+
+print(text_after_editing)
