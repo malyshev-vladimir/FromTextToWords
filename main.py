@@ -56,6 +56,7 @@ def remove_punctuation_marks(text):
 
 
 def remove_numbers(text):
+    """Удаление цифер"""
     edited_text = text.strip(''.join(LIST_OF_NUMBERS))
     return edited_text
 
